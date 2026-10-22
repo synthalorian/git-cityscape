@@ -1,0 +1,45 @@
+{
+  "name": "git-cityscape",
+  "version": "0.1.0",
+  "description": "Interactive Git history visualizer: your repository as a neon synthwave city.",
+  "type": "module",
+  "license": "MIT",
+  "author": "synthalorian",
+  "bin": {
+    "git-cityscape": "bin/git-cityscape"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20.19"
+  },
+  "keywords": [
+    "git",
+    "visualization",
+    "history",
+    "threejs",
+    "synthwave",
+    "treemap",
+    "cli"
+  ],
+  "scripts": {
+    "build": "npm run build:cli && npm run build:web",
+    "build:cli": "tsc -p tsconfig.cli.json",
+    "build:web": "vite build",
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "demo:data": "npm run build:cli && node bin/git-cityscape demo -o web/public/demo.json"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "@types/three": "^0.186.0",
+    "three": "^0.186.1",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.5",
+    "vitest": "^4.1.12"
+  }
+}

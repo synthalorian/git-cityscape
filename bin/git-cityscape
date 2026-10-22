@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+import('../dist/node/cli/index.js').catch((err) => {
+  if (err && err.code === 'ERR_MODULE_NOT_FOUND') {
+    console.error('git-cityscape: build output missing. Run `npm run build` first.');
+    process.exit(1);
+  }
+  throw err;
+});

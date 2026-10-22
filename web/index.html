@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="git-cityscape: explore Git history as a neon synthwave city." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2307001a'/%3E%3Crect x='4' y='14' width='6' height='14' fill='%23ff2a6d'/%3E%3Crect x='13' y='6' width='6' height='22' fill='%2305d9e8'/%3E%3Crect x='22' y='11' width='6' height='17' fill='%23d300c5'/%3E%3C/svg%3E" />
+    <title>git-cityscape</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="stage"></div>
+
+      <header class="hud brand">
+        <h1 class="logo"><span>GIT</span><em>//</em><span>CITYSCAPE</span></h1>
+        <div id="repo-name" class="repo-name">loading…</div>
+        <div id="stats" class="stats"></div>
+      </header>
+
+      <nav class="hud toolbar" aria-label="View options">
+        <div class="seg" role="group" aria-label="View">
+          <button id="view-3d" class="active" title="3D city (T)">3D</button>
+          <button id="view-2d" title="2D treemap (T)">2D</button>
+        </div>
+        <div class="seg" role="group" aria-label="Color by">
+          <button id="color-ext" class="active" title="Color by file type (C)">Type</button>
+          <button id="color-author" title="Color by last author (C)">Author</button>
+        </div>
+        <label class="select">
+          <span>Height</span>
+          <select id="height-mode">
+            <option value="linear">linear</option>
+            <option value="sqrt" selected>sqrt</option>
+            <option value="log">log</option>
+          </select>
+        </label>
+        <button id="rotate" title="Auto-rotate (R)">⟳</button>
+        <button id="reset-view" title="Reset camera">⌂</button>
+        <button id="load-file" title="Load a history.json file">Load JSON</button>
+        <input id="file-input" type="file" accept=".json,application/json" hidden />
+      </nav>
+
+      <aside id="commit-panel" class="hud panel commit-panel" aria-live="polite"></aside>
+      <aside id="legend" class="hud panel legend"></aside>
+      <aside id="file-panel" class="hud panel file-panel hidden"></aside>
+
+      <footer id="timeline" class="hud timeline">
+        <div class="controls">
+          <button id="to-start" title="First commit (Home)">⏮</button>
+          <button id="step-back" title="Previous commit (←)">◀</button>
+          <button id="play" class="play" title="Play / pause (Space)">▶</button>
+          <button id="step-fwd" title="Next commit (→)">▶|</button>
+          <button id="to-end" title="Last commit (End)">⏭</button>
+          <label class="select">
+            <span>Speed</span>
+            <select id="speed"></select>
+          </label>
+        </div>
+        <div class="track">
+          <canvas id="activity"></canvas>
+          <input id="scrubber" type="range" min="-1" max="0" step="1" value="0" aria-label="Commit" />
+        </div>
+        <div id="time-label" class="time-label"></div>
+      </footer>
+
+      <div id="tooltip" class="tooltip hidden"></div>
+      <div id="drop-overlay" class="drop-overlay hidden"><div>Drop a <code>history.json</code> to load it</div></div>
+      <div id="loading" class="loading"><div class="spinner"></div><div id="loading-text">Booting the grid…</div></div>
+    </div>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
