@@ -35,7 +35,7 @@
     "demo:data": "npm run build:cli && node bin/git-cityscape demo -o web/public/demo.json"
   },
   "devDependencies": {
-    "@types/node": "^20.19.43",
+    "@types/node": "^26.6.5",
     "@types/three": "^0.186.0",
     "three": "^0.186.1",
     "typescript": "^5.9.3",
